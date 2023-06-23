@@ -1,5 +1,5 @@
 {% set name = "azure-core" %}
-{% set version = "1.14.0" %}
+{% set version = "1.27.1" %}
 
 
 package:
@@ -8,36 +8,45 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
-  sha256: f32bb64aabe61f496255c16dd6c555a027da628109460bf27311cee0caf78f96
+  sha256: 5975c20808fa388243f01a8b79021bfbe114f503a27c543f002c5fc8bbdd73dd
 
 build:
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  skip: True  # [py<37]
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python
+    - setuptools
+    - wheel
   run:
-    - python >=3.6
+    - python
     - requests >=2.18.4
     - six >=1.11.0
+    - typing-extensions >=4.3.0
 
 test:
   imports:
     - azure.core
     - azure.core.pipeline
-  commands:
-    - pip check
   requires:
     - pip
+  commands:
+    - pip check
 
 about:
-  home: https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/core/azure-core
+  home: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core
+  dev_url: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core
+  doc_url: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core
   summary: Microsoft Azure Core Library for Python
+  description: |
+    Azure core provides shared exceptions and modules for Python SDK client libraries. 
+    These libraries follow the Azure SDK Design Guidelines for Python .
   license: MIT
-  license_file: LICENSE.txt
+  license_family: MIT
+  license_file: LICENSE
 
 extra:
   recipe-maintainers:
