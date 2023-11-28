@@ -1,5 +1,5 @@
 {% set name = "azure-core" %}
-{% set version = "1.27.1" %}
+{% set version = "1.29.5" %}
 
 
 package:
@@ -7,8 +7,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
-  sha256: 5975c20808fa388243f01a8b79021bfbe114f503a27c543f002c5fc8bbdd73dd
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 52983c89d394c6f881a121e5101c5fa67278ca3b1f339c8fb2ef39230c70e9ac
 
 build:
   number: 0
@@ -25,7 +25,9 @@ requirements:
     - python
     - requests >=2.18.4
     - six >=1.11.0
-    - typing-extensions >=4.3.0
+    - typing-extensions >=4.6.0
+  run_constrained:
+    - aiohttp >=3.0
 
 test:
   imports:
