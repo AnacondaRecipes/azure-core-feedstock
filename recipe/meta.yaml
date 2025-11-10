@@ -30,10 +30,18 @@ requirements:
     - aiohttp >=3.0
     - opentelemetry-api >=1.26,<2.dev0
 
+# azure-core has a tests but all of them require running test server which is not started here.
 test:
   imports:
     - azure.core
+    - azure.core.utils
+    - azure.core.rest
+    - azure.core.tracing
+    - azure.core.tracing
+    - azure.core.polling
     - azure.core.pipeline
+    - azure.core.pipeline.policies
+    - azure.core.pipeline.transport
   requires:
     - pip
   commands:
@@ -46,7 +54,7 @@ about:
   summary: Microsoft Azure Core Library for Python
   description: |
     Azure core provides shared exceptions and modules for Python SDK client libraries.
-    These libraries follow the Azure SDK Design Guidelines for Python .
+    These libraries follow the Azure SDK Design Guidelines for Python.
   license: MIT
   license_family: MIT
   license_file: LICENSE
