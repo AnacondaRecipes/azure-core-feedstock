@@ -1,13 +1,13 @@
 {% set name = "azure-core" %}
-{% set version = "1.36.0" %}
+{% set version = "1.39.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/a/azure-core/azure_core-1.36.0.tar.gz
-  sha256: 22e5605e6d0bf1d229726af56d9e92bc37b6e726b141a18be0b4d424131741b7
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
+  sha256: 8a90a562998dd44ce84597590fff6249701b98c0e8797c95fcdd695b54c35d74
 
 build:
   number: 0
@@ -18,17 +18,14 @@ requirements:
   host:
     - pip
     - python
-    - setuptools
-    - wheel
+    - setuptools >=77.0.3
   run:
     - python
     - requests >=2.21.0
-    - six >=1.11.0
-    - typing-extensions >=4.6.0
     - typing_extensions >=4.6.0
   run_constrained:
     - aiohttp >=3.0
-    - opentelemetry-api >=1.26,<2.dev0
+    - opentelemetry-api >=1.26,<2
 
 # azure-core has a tests but all of them require running test server which is not started here.
 test:
