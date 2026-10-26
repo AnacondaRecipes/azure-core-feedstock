@@ -1,5 +1,5 @@
 {% set name = "azure-core" %}
-{% set version = "1.39.0" %}
+{% set version = "1.41.0" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
-  sha256: 8a90a562998dd44ce84597590fff6249701b98c0e8797c95fcdd695b54c35d74
+  sha256: f46ff5dfcd230f25cf1c19e8a34b8dc08a337b2503e268bb600a16c00db8ad5a
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  skip: true  # [py<39]
+  skip: true  # [py<310]
 
 requirements:
   host:
@@ -33,7 +33,6 @@ test:
     - azure.core
     - azure.core.utils
     - azure.core.rest
-    - azure.core.tracing
     - azure.core.tracing
     - azure.core.polling
     - azure.core.pipeline
