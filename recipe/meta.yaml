@@ -1,7 +1,6 @@
 {% set name = "azure-core" %}
 {% set version = "1.41.0" %}
 
-# azure-core has a tests but all of them require running test server which is not started here.
 package:
   name: {{ name }}
   version: {{ version }}
@@ -25,11 +24,11 @@ requirements:
     - python
     - requests >=2.21.0
     - typing_extensions >=4.6.0
-    - flask ==2.2.5
   run_constrained:
     - aiohttp >=3.0
     - opentelemetry-api >=1.26,<2.dev0
 
+# azure-core has a tests but all of them require running test server which is not started here.
 test:
   imports:
     - azure.core
