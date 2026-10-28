@@ -26,7 +26,7 @@ requirements:
     - typing_extensions >=4.6.0
   run_constrained:
     - aiohttp >=3.0
-    - opentelemetry-api >=1.26,<2.dev0
+    - opentelemetry-api >=1.26,<2
 
 # azure-core has a tests but all of them require running test server which is not started here.
 test:
