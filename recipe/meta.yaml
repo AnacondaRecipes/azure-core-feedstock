@@ -19,6 +19,7 @@ requirements:
     - pip
     - python
     - setuptools >=77.0.3
+    - wheel
   run:
     - python
     - requests >=2.21.0
